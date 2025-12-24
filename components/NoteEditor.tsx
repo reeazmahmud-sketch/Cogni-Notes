@@ -204,16 +204,16 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, projectName, branchName, 
                   </select>
 
                   <div className="flex items-center gap-1 pr-4 border-r border-white/5">
-                    <button onClick={() => setFontSize('text-xl')} className={`w-8 h-8 rounded-lg text-[10px] font-black transition-all ${fontSize === 'text-xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-slate-400'}`}>A</button>
-                    <button onClick={() => setFontSize('text-3xl')} className={`w-8 h-8 rounded-lg text-base font-black transition-all ${fontSize === 'text-3xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-slate-400'}`}>A</button>
-                    <button onClick={() => setFontSize('text-5xl')} className={`w-8 h-8 rounded-lg text-xl font-black transition-all ${fontSize === 'text-5xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-slate-400'}`}>A</button>
+                    <button onClick={() => setFontSize('text-xl')} className={`w-8 h-8 rounded-lg text-[10px] font-black transition-all ${fontSize === 'text-xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-[#f26419]'}`}>A</button>
+                    <button onClick={() => setFontSize('text-3xl')} className={`w-8 h-8 rounded-lg text-base font-black transition-all ${fontSize === 'text-3xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-[#f26419]'}`}>A</button>
+                    <button onClick={() => setFontSize('text-5xl')} className={`w-8 h-8 rounded-lg text-xl font-black transition-all ${fontSize === 'text-5xl' ? 'bg-[#f26419] text-white shadow-lg' : 'text-slate-600 hover:text-[#f26419]'}`}>A</button>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <button onClick={() => insertFormatting('**', '**')} className="w-8 h-8 text-slate-500 font-black text-sm hover:text-white transition-colors">B</button>
-                    <button onClick={() => insertFormatting('*', '*')} className="w-8 h-8 text-slate-500 italic hover:text-white transition-colors">I</button>
-                    <button onClick={() => insertFormatting('\n- ')} className="w-8 h-8 text-slate-500 hover:text-white transition-colors"><ListIcon className="w-4 h-4" /></button>
-                    <button onClick={() => insertFormatting('\n[ ] ')} className="w-8 h-8 text-slate-500 hover:text-white transition-colors"><PlusIcon className="w-4 h-4" /></button>
+                    <button onClick={() => insertFormatting('**', '**')} className="w-8 h-8 text-slate-500 font-black text-sm hover:text-[#f26419] transition-colors">B</button>
+                    <button onClick={() => insertFormatting('*', '*')} className="w-8 h-8 text-slate-500 italic hover:text-[#f26419] transition-colors">I</button>
+                    <button onClick={() => insertFormatting('\n- ')} className="w-8 h-8 text-slate-500 hover:text-[#f26419] transition-colors"><ListIcon className="w-4 h-4" /></button>
+                    <button onClick={() => insertFormatting('\n[ ] ')} className="w-8 h-8 text-slate-500 hover:text-[#f26419] transition-colors"><PlusIcon className="w-4 h-4" /></button>
                   </div>
               </div>
           </div>

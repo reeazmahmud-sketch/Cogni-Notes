@@ -130,7 +130,7 @@ const CogniSentinel: React.FC<{ state: 'idle' | 'thinking' | 'talking' }> = ({ s
 
 const ChatModule: React.FC<ChatModuleProps> = ({ note }) => {
     const [messages, setMessages] = useState<Message[]>([
-        { role: 'ai', content: `নমস্কার! আমি আপনার নোট "${note.title}" নিয়ে আলোচনার জন্য প্রস্তুত। আমি কি কোনো নির্দিষ্ট বিষয়ের ব্যাখ্যা দেব নাকি এই বিষয় নিয়ে একটি ছবি তৈরি করব?` }
+        { role: 'ai', content: `নমস্কার! আমি আপনার নোট "${note.title}" নিয়ে আলোচনার জন্য প্রস্তুত। আমি কি কোনো নির্দিষ্ট বিষয়ের ব্যাখ্যা দেব নাকি এই বিষয়ের উপর ভিত্তি করে একটি ছবি তৈরি করব?` }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -272,7 +272,7 @@ const ChatModule: React.FC<ChatModuleProps> = ({ note }) => {
                     </div>
                     <button 
                         onClick={() => handleSend("সারসংক্ষেপ কর")}
-                        className="w-full py-4 bg-sky-500/5 hover:bg-sky-500/10 border border-sky-500/10 text-sky-400 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all"
+                        className="w-full py-4 bg-sky-500/5 hover:bg-sky-500/10 border border-sky-500/10 text-sky-400 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all liquid-glass-btn"
                     >
                         নোটের সারসংক্ষেপ
                     </button>
@@ -328,13 +328,13 @@ const ChatModule: React.FC<ChatModuleProps> = ({ note }) => {
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                             placeholder="সেন্টিনেলকে কিছু জিজ্ঞাসা করুন..."
-                            className="w-full h-16 bg-[#1a212f]/60 border border-white/5 rounded-full px-10 pr-24 text-slate-200 outline-none focus:border-sky-500/50 transition-all shadow-2xl relative z-10"
+                            className="w-full h-16 cogni-input rounded-full px-10 pr-24 text-slate-200 relative z-10"
                         />
                         <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 z-20">
                             <button 
                                 onClick={() => handleSend()}
                                 disabled={isLoading || !input.trim()}
-                                className="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white hover:bg-sky-400 transition-all active:scale-90"
+                                className="w-10 h-10 liquid-glass-btn rounded-full flex items-center justify-center text-sky-400 hover:text-white transition-all active:scale-90"
                             >
                                 {isLoading ? <Spinner /> : <SparklesIcon className="w-5 h-5" />}
                             </button>

@@ -116,7 +116,7 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                  <div className="max-w-4xl mx-auto space-y-12">
                     <div className="bg-[#0f172a]/80 border border-slate-800 rounded-[2rem] p-10 backdrop-blur-xl">
                         <div className="flex justify-between items-center mb-8">
-                            <h2 className="text-2xl font-black text-white">সেটআপ কনফিগারেশন</h2>
+                            <h2 className="text-2xl font-black text-white">সেটিআপ কনফিগারেশন</h2>
                             <button onClick={() => setActiveTab('live')} className="text-sky-400 font-bold text-xs uppercase tracking-widest hover:underline">লাইভ ভিউতে যান &rarr;</button>
                         </div>
                         <div className="grid md:grid-cols-2 gap-12">
@@ -259,7 +259,7 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                 {/* Controls & Input */}
                 <div className="bg-[#0f172a]/80 backdrop-blur-xl border-t border-white/5 pt-6 -mx-6 -mb-6 px-6 pb-6 lg:rounded-t-[2.5rem] lg:mx-0 lg:mb-0 lg:border lg:border-slate-800 lg:shadow-2xl">
                     <div className="grid grid-cols-4 gap-4 mb-6">
-                        <button className="col-span-1 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 shadow-lg shadow-blue-900/20 active:scale-95 transition-all">
+                        <button className="col-span-1 h-14 liquid-glass-btn rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 shadow-lg shadow-blue-900/20 active:scale-95 transition-all">
                             <PlayIcon className="w-4 h-4" />
                             <span className="text-[9px]">চালান</span>
                         </button>
@@ -281,12 +281,12 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                     </div>
 
                     <form onSubmit={handleSendCommand} className="relative group">
-                        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-500 font-mono font-bold text-lg pointer-events-none group-focus-within:text-blue-400">{'>'}</div>
+                        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-500 font-mono font-bold text-lg pointer-events-none group-focus-within:text-[#f26419]">{'>'}</div>
                         <input 
                             value={command}
                             onChange={(e) => setCommand(e.target.value)}
                             placeholder="কমান্ড লিখুন..."
-                            className="w-full h-16 bg-[#020617] border border-slate-800 rounded-2xl pl-12 pr-16 text-slate-200 font-mono placeholder-slate-700 outline-none focus:border-blue-500/50 transition-all shadow-inner"
+                            className="w-full h-16 cogni-input rounded-2xl pl-12 pr-16 text-slate-200 font-mono"
                         />
                         <button 
                             type="submit"

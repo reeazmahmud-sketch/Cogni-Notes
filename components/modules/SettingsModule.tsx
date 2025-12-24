@@ -86,8 +86,8 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
                         activeTab === tab.id 
-                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' 
-                            : 'bg-[#161b22] border border-white/5 text-slate-400 hover:text-white hover:bg-white/5'
+                            ? 'bg-[#f26419] text-white shadow-lg shadow-[#f26419]/20' 
+                            : 'liquid-glass-btn text-slate-400'
                     }`}
                 >
                     {tab.icon}
@@ -133,7 +133,7 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                     </div>
                                     <button 
                                         onClick={() => toggleModule(mod.id)}
-                                        className={`w-14 h-8 rounded-full relative transition-all duration-300 ${modules[mod.id] ? 'bg-blue-600' : 'bg-slate-700'}`}
+                                        className={`w-14 h-8 rounded-full relative transition-all duration-300 ${modules[mod.id] ? 'bg-[#f26419]' : 'bg-slate-700'}`}
                                     >
                                         <div className={`absolute top-1 w-6 h-6 rounded-full bg-white transition-all duration-300 ${modules[mod.id] ? 'left-7' : 'left-1'}`}></div>
                                     </button>
@@ -155,17 +155,17 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                     <p className="text-xs text-slate-500 ml-auto">অ্যাপের দৃশ্যমানতা কাস্টমাইজ করুন</p>
                                 </div>
                                 
-                                <div className="bg-[#161b22] border border-white/5 rounded-[2rem] p-2 flex">
+                                <div className="bg-[#161b22] border border-white/5 rounded-[2rem] p-2 flex gap-2">
                                     <button 
                                         onClick={() => setDarkMode(true)}
-                                        className={`flex-1 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all ${darkMode ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                                        className={`flex-1 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all ${darkMode ? 'bg-[#f26419] text-white shadow-lg' : 'liquid-glass-btn'}`}
                                     >
                                         <MoonIcon className="w-5 h-5" />
                                         <span className="font-bold text-sm">ডার্ক মোড</span>
                                     </button>
                                     <button 
                                         onClick={() => setDarkMode(false)}
-                                        className={`flex-1 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all ${!darkMode ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                                        className={`flex-1 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all ${!darkMode ? 'bg-[#f26419] text-white shadow-lg' : 'liquid-glass-btn'}`}
                                     >
                                         <SunIcon className="w-5 h-5" />
                                         <span className="font-bold text-sm">লাইট মোড</span>
@@ -294,7 +294,7 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                     <input 
                                         value={profile.username} 
                                         onChange={(e) => setProfile({...profile, username: e.target.value})}
-                                        className="w-full bg-[#161b22] h-16 rounded-full border border-white/5 pl-14 pr-6 text-slate-200 outline-none focus:border-blue-500/50 focus:bg-[#1a212f] transition-all"
+                                        className="w-full cogni-input h-16 rounded-full pl-14 pr-6 text-slate-200"
                                     />
                                 </div>
                             </div>
@@ -306,7 +306,7 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                     <input 
                                         value={profile.email} 
                                         onChange={(e) => setProfile({...profile, email: e.target.value})}
-                                        className="w-full bg-[#161b22] h-16 rounded-full border border-white/5 pl-14 pr-6 text-slate-200 outline-none focus:border-blue-500/50 focus:bg-[#1a212f] transition-all"
+                                        className="w-full cogni-input h-16 rounded-full pl-14 pr-6 text-slate-200"
                                     />
                                 </div>
                             </div>
@@ -319,7 +319,7 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                         type="password"
                                         value={profile.password} 
                                         onChange={(e) => setProfile({...profile, password: e.target.value})}
-                                        className="w-full bg-[#161b22] h-16 rounded-full border border-white/5 pl-14 pr-14 text-slate-200 outline-none focus:border-blue-500/50 focus:bg-[#1a212f] transition-all"
+                                        className="w-full cogni-input h-16 rounded-full pl-14 pr-14 text-slate-200"
                                     />
                                     <EyeIcon className="w-5 h-5 absolute right-6 top-1/2 -translate-y-1/2 text-slate-600 cursor-pointer" />
                                 </div>
@@ -332,12 +332,12 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                                     <textarea 
                                         value={profile.bio || "ডিজিটাল নোট টেকার এবং প্রোডাক্টিভিটি উৎসাহী।"} 
                                         onChange={(e) => setProfile({...profile, bio: e.target.value})}
-                                        className="w-full bg-[#161b22] h-32 rounded-[2rem] border border-white/5 pl-14 pt-5 pr-6 text-slate-200 outline-none focus:border-blue-500/50 focus:bg-[#1a212f] transition-all resize-none leading-relaxed"
+                                        className="w-full cogni-input h-32 rounded-[2rem] pl-14 pt-5 pr-6 text-slate-200 resize-none leading-relaxed"
                                     />
                                 </div>
                             </div>
                             
-                            <button className="w-full h-16 bg-[#f26419] text-white rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#ff7324] hover:shadow-lg hover:shadow-orange-500/20 transition-all active:scale-95 flex items-center justify-center gap-3 mt-4">
+                            <button className="w-full h-16 liquid-glass-btn rounded-full font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3 mt-4">
                                 <DocumentIcon className="w-5 h-5" />
                                 পরিবর্তনগুলি সংরক্ষণ করুন
                             </button>

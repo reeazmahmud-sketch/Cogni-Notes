@@ -46,8 +46,18 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
         }
     }
 
-    if (!password.trim()) {
+    if (!password) {
         setError('পাসওয়ার্ড প্রদান করা আবশ্যক।');
+        return;
+    }
+
+    // Password Complexity Validation
+    const hasLetter = /[A-Za-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    
+    if (password.length < 6 || !hasLetter || !hasNumber || !hasSpecial) {
+        setError('পাসওয়ার্ড অন্তত ৬ অক্ষরের হতে হবে এবং এতে অক্ষর, সংখ্যা ও বিশেষ চিহ্ন থাকতে হবে।');
         return;
     }
 
@@ -192,7 +202,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                 <button 
                     type="submit"
                     disabled={isLoading}
-                    className="w-full h-16 rounded-[2rem] font-black text-sm liquid-glass-btn flex items-center justify-center gap-3 mt-6 uppercase tracking-[0.2em] hover:shadow-[0_0_40px_rgba(56,189,248,0.3)] transition-shadow duration-500"
+                    className="w-full h-16 rounded-[2rem] font-black text-sm liquid-glass-btn flex items-center justify-center gap-3 mt-6 uppercase tracking-[0.2em] hover:shadow-[0_0_40px_rgba(242,100,25,0.4)] transition-shadow duration-500"
                 >
                     {isLoading ? <Spinner /> : (
                         <>
