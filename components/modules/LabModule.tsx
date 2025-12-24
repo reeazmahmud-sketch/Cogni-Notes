@@ -147,7 +147,7 @@ const LabModule: React.FC<LabModuleProps> = ({ note }) => {
                                 className={`flex-1 py-4 text-[11px] font-black rounded-2xl border transition-all duration-500 uppercase tracking-widest active:scale-95 ${
                                     selectedLength === len 
                                         ? 'liquid-glass-btn text-white' 
-                                        : 'bg-white/5 border-white/5 text-slate-500 hover:text-slate-300 hover:bg-white/10'
+                                        : 'liquid-glass-btn text-slate-500'
                                 }`}
                             >
                                 {len}

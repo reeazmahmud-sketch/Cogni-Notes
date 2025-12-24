@@ -35,29 +35,30 @@
       /* --- LIQUID GLASS TRANSITION SYSTEM --- */
       
       .liquid-glass-btn {
-        background: rgba(56, 189, 248, 0.08); /* Default Light Blue Tint */
-        border: 1px solid rgba(56, 189, 248, 0.25);
-        backdrop-filter: blur(16px);
-        color: #bae6fd;
+        background: rgba(56, 189, 248, 0.05); /* Default: Ultra-subtle Blue Glass */
+        border: 1px solid rgba(56, 189, 248, 0.15); /* Default: Subtle Blue Border */
+        backdrop-filter: blur(20px);
+        color: #94a3b8; /* Slate-400 default text */
         position: relative;
         overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastic/Liquid Bounce */
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* 500ms Smooth */
         cursor: pointer;
         z-index: 10;
         box-shadow: 
-          0 4px 20px rgba(0, 0, 0, 0.1),
-          inset 0 0 15px rgba(56, 189, 248, 0.05);
+          0 4px 10px rgba(0, 0, 0, 0.2),
+          inset 0 0 10px rgba(56, 189, 248, 0.02);
       }
 
       /* Interaction State: Sun-Orange Transformation */
       .liquid-glass-btn:hover {
-        transform: scale(1.03) translateY(-2px);
-        background: rgba(242, 100, 25, 0.15); /* Sun Orange */
+        transform: scale(1.02) translateY(-1px);
+        background: rgba(242, 100, 25, 0.15); /* Sun Orange Tint */
         border-color: #f26419;
         color: white !important;
         box-shadow: 
-          0 15px 40px -10px rgba(242, 100, 25, 0.5),
-          inset 0 0 25px rgba(242, 100, 25, 0.25);
+          0 0 30px rgba(242, 100, 25, 0.4), /* Bright Glow */
+          0 0 10px rgba(242, 100, 25, 0.6), /* Core Glow */
+          inset 0 0 20px rgba(242, 100, 25, 0.2);
       }
       
       .liquid-glass-btn:active {
@@ -105,13 +106,14 @@
       /* --- COGNI INPUT SYSTEM --- */
       
       .cogni-input {
-        background: rgba(56, 189, 248, 0.05) !important;
+        background: rgba(56, 189, 248, 0.03) !important; /* Default: Very faint blue */
         border: 1px solid rgba(56, 189, 248, 0.15) !important;
         backdrop-filter: blur(20px);
-        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important; /* 500ms Smooth */
         outline: none !important;
         color: #e2e8f0 !important;
         font-weight: 500;
+        caret-color: #39ff14; /* Bright Neon Green Caret */
       }
       
       .cogni-input::placeholder {
@@ -120,12 +122,13 @@
       }
 
       .cogni-input:focus {
-        border-color: #f26419 !important;
-        background: rgba(20, 25, 40, 0.95) !important;
+        border-color: #f26419 !important; /* Sun Orange Border */
+        background: rgba(242, 100, 25, 0.05) !important; /* Slight Orange Tint */
         box-shadow: 
-          0 0 35px rgba(242, 100, 25, 0.5), 
-          inset 0 0 15px rgba(242, 100, 25, 0.1) !important;
-        transform: translateY(-1px) scale(1.005);
+          0 0 35px rgba(242, 100, 25, 0.5), /* Large Bright Glow */
+          0 0 15px rgba(242, 100, 25, 0.7), /* Intense Inner Glow */
+          inset 0 0 20px rgba(242, 100, 25, 0.1) !important;
+        transform: scale(1.005);
         color: white !important;
       }
 
@@ -270,7 +273,7 @@
       .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
       .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -281,9 +284,9 @@
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

@@ -43,10 +43,10 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ onTranscriptFinalized, is
             {!isRecording && !isConnecting ? (
                 <button 
                     onClick={startRecording}
-                    className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_0_30px_rgba(242,100,25,0.4)] transition-all duration-500 active:scale-90 group"
+                    className="w-14 h-14 rounded-full liquid-glass-btn flex items-center justify-center group"
                     title="ভয়েস নোট"
                 >
-                    <MicIcon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                    <MicIcon className="w-6 h-6 text-sky-400 group-hover:text-white transition-colors" />
                 </button>
             ) : (
                 <button 

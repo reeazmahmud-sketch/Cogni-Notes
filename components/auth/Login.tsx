@@ -102,6 +102,13 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
     }, 2000);
   };
 
+  const hasError = (field: 'email' | 'password') => {
+      if (!error) return false;
+      if (field === 'email' && (error.includes('ইউজারনেম') || error.includes('ইমেল'))) return true;
+      if (field === 'password' && error.includes('পাসওয়ার্ড')) return true;
+      return false;
+  };
+
   return (
     <div className="h-full w-full bg-[#010409] relative overflow-hidden flex items-center justify-center font-['Hind_Siliguri'] perspective-container">
       
@@ -164,7 +171,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                 <div className="space-y-2">
                     <label className="text-[10px] font-black text-sky-400 uppercase tracking-[0.2em] ml-2">ব্যবহারকারীর ইউজারনেম/ইমেল</label>
                     <div className="relative group">
-                        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#f26419] transition-colors z-10">
+                        <div className={`absolute left-6 top-1/2 -translate-y-1/2 transition-colors z-10 ${hasError('email') ? 'text-red-400' : 'text-slate-500 group-focus-within:text-[#f26419]'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -174,7 +181,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder="আপনার আইডি লিখুন"
-                            className="w-full h-16 cogni-input rounded-[2rem] pl-16 pr-6 text-base shadow-inner"
+                            className={`w-full h-16 cogni-input rounded-[2rem] pl-16 pr-6 text-base shadow-inner ${hasError('email') ? 'border-red-500/50' : ''}`}
                         />
                     </div>
                 </div>
@@ -187,7 +194,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                         </button>
                     </div>
                     <div className="relative group">
-                        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#f26419] transition-colors z-10">
+                        <div className={`absolute left-6 top-1/2 -translate-y-1/2 transition-colors z-10 ${hasError('password') ? 'text-red-400' : 'text-slate-500 group-focus-within:text-[#f26419]'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                             </svg>
@@ -197,7 +204,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             placeholder="••••••••"
-                            className="w-full h-16 cogni-input rounded-[2rem] pl-16 pr-14 tracking-widest text-base shadow-inner"
+                            className={`w-full h-16 cogni-input rounded-[2rem] pl-16 pr-14 tracking-widest text-base shadow-inner ${hasError('password') ? 'border-red-500/50' : ''}`}
                         />
                         <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors z-10">
                             {showPassword ? <EyeSlashIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
@@ -224,17 +231,17 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
             <div className="grid grid-cols-2 gap-4 mt-8">
                 <button 
                     onClick={() => handleSocialLoginClick('google')} 
-                    className="h-16 rounded-[2rem] flex items-center justify-center gap-3 bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all group"
+                    className="h-16 rounded-[2rem] liquid-glass-btn flex items-center justify-center gap-3 group"
                 >
                     <GoogleIcon className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />
-                    <span className="text-[10px] font-black text-slate-400 group-hover:text-white uppercase tracking-widest">Google</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">Google</span>
                 </button>
                 <button 
                     onClick={() => handleSocialLoginClick('apple')} 
-                    className="h-16 rounded-[2rem] flex items-center justify-center gap-3 bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all group"
+                    className="h-16 rounded-[2rem] liquid-glass-btn flex items-center justify-center gap-3 group"
                 >
                     <AppleIcon className="w-5 h-5 text-slate-400 group-hover:text-white opacity-80 group-hover:opacity-100 transition-all" />
-                    <span className="text-[10px] font-black text-slate-400 group-hover:text-white uppercase tracking-widest">Apple</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">Apple</span>
                 </button>
             </div>
 

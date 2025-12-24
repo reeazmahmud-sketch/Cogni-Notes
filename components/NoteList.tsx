@@ -24,6 +24,10 @@ const NoteList: React.FC<NoteListProps> = ({ projects, notes, activeNoteId, onNo
   const [titleSize, setTitleSize] = useState('text-2xl');
   const [titleColor, setTitleColor] = useState('text-white');
 
+  // Icon selection state
+  const [selectedIcon, setSelectedIcon] = useState('📁');
+  const availableIcons = ['📁', '🚀', '💡', '📝', '🎨', '🔬', '💻', '📅', '📊', '🔒'];
+
   const filteredProjects = useMemo(() => {
     return projects.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [projects, searchTerm]);
@@ -31,9 +35,10 @@ const NoteList: React.FC<NoteListProps> = ({ projects, notes, activeNoteId, onNo
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!projectName.trim()) return;
-    onCreateProject(projectName, '', '📁');
+    onCreateProject(projectName, '', selectedIcon);
     setIsModalOpen(false);
     setProjectName('');
+    setSelectedIcon('📁');
   };
 
   const toggleExpand = (e: React.MouseEvent, id: string) => {
@@ -198,6 +203,27 @@ const NoteList: React.FC<NoteListProps> = ({ projects, notes, activeNoteId, onNo
 
                     <form onSubmit={handleFormSubmit} className="space-y-4">
                         <input autoFocus value={projectName} onChange={(e) => setProjectName(e.target.value)} placeholder="নাম..." className="w-full cogni-input rounded-2xl h-12 px-5 text-slate-200" required />
+                        
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">আইকন</label>
+                            <div className="flex flex-wrap gap-2">
+                                {availableIcons.map((icon) => (
+                                    <button
+                                        key={icon}
+                                        type="button"
+                                        onClick={() => setSelectedIcon(icon)}
+                                        className={`w-9 h-9 rounded-xl flex items-center justify-center text-lg transition-all duration-300 ${
+                                            selectedIcon === icon 
+                                                ? 'bg-[#f26419] text-white shadow-lg scale-110' 
+                                                : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
+                                        }`}
+                                    >
+                                        {icon}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
                         <button type="submit" className="w-full h-12 liquid-glass-btn rounded-2xl font-black text-xs uppercase tracking-widest">তৈরি করুন</button>
                     </form>
                 </div>

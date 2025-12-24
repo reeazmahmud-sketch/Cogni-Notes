@@ -188,9 +188,15 @@ export const generateCodeSnippet = async (text: string): Promise<string> => {
     try {
         const response = await ai.models.generateContent({
             model: "gemini-3-flash-preview",
-            contents: `নোটের এই বিষয়বস্তুর ওপর ভিত্তি করে একটি কার্যকরী প্রোগ্রামিং কোড স্নিপেট তৈরি করুন (যেমন Python, JavaScript বা C++)। নোটের লজিক বা সারমর্ম কোড হিসেবে প্রকাশ করুন। শুধুমাত্র কোড ব্লকটি দিন, কোনো অতিরিক্ত ব্যাখ্যা ছাড়াই।\n\nনোটের বিষয়বস্তু:\n${text}`,
+            contents: `নোটের এই বিষয়বস্তুর ওপর ভিত্তি করে একটি কার্যকরী প্রোগ্রামিং কোড স্নিপেট তৈরি করুন (যেমন Python, JavaScript বা C++)। নোটের লজিক বা সারমর্ম কোড হিসেবে প্রকাশ করুন। শুধুমাত্র কোড ব্লকটি দিন, কোনো অতিরিক্ত ব্যাখ্যা বা মার্কডাউন ছাড়াই।\n\nনোটের বিষয়বস্তু:\n${text}`,
         });
-        return response.text || "// কোড জেনারেট করা যায়নি।";
+        
+        let code = response.text || "// কোড জেনারেট করা যায়নি।";
+        
+        // Remove markdown code blocks if present to ensure clean copy
+        code = code.replace(/^```[a-zA-Z]*\n?/g, '').replace(/```$/g, '').trim();
+        
+        return code;
     } catch (error) {
         console.error("Code Gen Error:", error);
         return "// কোড জেনারেট করতে সমস্যা হয়েছে।";

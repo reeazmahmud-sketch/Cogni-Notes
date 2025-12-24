@@ -69,16 +69,16 @@ const SocialAuthOverlay: React.FC<SocialAuthOverlayProps> = ({ platform, onClose
                         <button 
                             key={idx}
                             onClick={() => handleSelectAccount(acc.email)}
-                            className="w-full p-4 flex items-center gap-4 bg-white/5 border border-white/5 hover:border-sky-500/30 hover:bg-white/10 rounded-2xl transition-all group"
+                            className="w-full p-4 flex items-center gap-4 liquid-glass-btn rounded-2xl group"
                         >
                             <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 overflow-hidden flex items-center justify-center">
                                 {acc.img ? <img src={acc.img} className="w-full h-full object-cover" /> : <AppleIcon className="w-5 h-5 text-white" />}
                             </div>
                             <div className="flex-1 text-left">
-                                <p className="text-sm font-black text-slate-200 group-hover:text-white transition-colors">{acc.name}</p>
-                                <p className="text-[10px] font-medium text-slate-500">{acc.email}</p>
+                                <p className="text-sm font-black group-hover:text-white transition-colors">{acc.name}</p>
+                                <p className="text-[10px] font-medium opacity-70">{acc.email}</p>
                             </div>
-                            <div className="text-slate-700 group-hover:text-sky-400 transition-colors">
+                            <div className="text-slate-700 group-hover:text-white transition-colors">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
@@ -86,11 +86,11 @@ const SocialAuthOverlay: React.FC<SocialAuthOverlayProps> = ({ platform, onClose
                         </button>
                     ))}
 
-                    <button className="w-full p-4 flex items-center gap-4 bg-transparent border border-dashed border-white/10 hover:border-sky-500/30 hover:bg-white/5 rounded-2xl transition-all group">
+                    <button className="w-full p-4 flex items-center gap-4 liquid-glass-btn rounded-2xl group">
                         <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/5 flex items-center justify-center">
                             <svg className="w-5 h-5 text-slate-600 group-hover:text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                         </div>
-                        <p className="text-xs font-black text-slate-500 group-hover:text-slate-300 tracking-wider">অন্য অ্যাকাউন্ট ব্যবহার করুন</p>
+                        <p className="text-xs font-black tracking-wider">অন্য অ্যাকাউন্ট ব্যবহার করুন</p>
                     </button>
                 </div>
             )}

@@ -68,8 +68,18 @@ const SignUp: React.FC<SignUpProps> = ({ onLogin, onVerificationSent, onGoToLogi
         return;
     }
 
-    if (!passValidity.hasLetter || !passValidity.hasNumber || !passValidity.hasSpecial) {
-        setError('পাসওয়ার্ডে অবশ্যই অক্ষর (Letters), সংখ্যা (Numbers) এবং বিশেষ চিহ্ন (Special Characters) এর সমন্বয় থাকতে হবে।');
+    if (!passValidity.hasLetter) {
+        setError('পাসওয়ার্ডে অন্তত একটি অক্ষর (Letter) থাকতে হবে।');
+        return;
+    }
+
+    if (!passValidity.hasNumber) {
+        setError('পাসওয়ার্ডে অন্তত একটি সংখ্যা (Number) থাকতে হবে।');
+        return;
+    }
+
+    if (!passValidity.hasSpecial) {
+        setError('পাসওয়ার্ডে অন্তত একটি বিশেষ চিহ্ন (Special Character) থাকতে হবে।');
         return;
     }
 
@@ -94,8 +104,9 @@ const SignUp: React.FC<SignUpProps> = ({ onLogin, onVerificationSent, onGoToLogi
     onLogin();
   };
 
-  const hasError = (field: 'email' | 'password' | 'confirm') => {
+  const hasError = (field: 'username' | 'email' | 'password' | 'confirm') => {
       if (!error) return false;
+      if (field === 'username' && error.includes('ইউজারনেম')) return true;
       if (field === 'email' && (error.includes('ইমেল'))) return true;
       if (field === 'password' && (error.includes('পাসওয়ার্ড') && !error.includes('মিলছে না'))) return true;
       if (field === 'confirm' && error.includes('মিলছে না')) return true;
@@ -145,10 +156,10 @@ const SignUp: React.FC<SignUpProps> = ({ onLogin, onVerificationSent, onGoToLogi
 
             <form onSubmit={handleSubmit} className="w-full space-y-4">
                 <div className="relative group">
-                    <div className="absolute inset-y-0 left-6 flex items-center text-slate-700 group-focus-within:text-[#f26419] transition-colors z-10">
+                    <div className={`absolute inset-y-0 left-6 flex items-center transition-colors z-10 ${hasError('username') ? 'text-red-400' : 'text-slate-700 group-focus-within:text-[#f26419]'}`}>
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                     </div>
-                    <input type="text" value={username} onChange={(e) => { setUsername(e.target.value); setError(''); }} placeholder="ইউজারনেম" className="w-full cogni-input rounded-full h-16 pl-16 pr-6 text-slate-200 placeholder-slate-800" />
+                    <input type="text" value={username} onChange={(e) => { setUsername(e.target.value); setError(''); }} placeholder="ইউজারনেম" className={`w-full cogni-input rounded-full h-16 pl-16 pr-6 text-slate-200 placeholder-slate-800 ${hasError('username') ? 'border-red-500/50' : ''}`} />
                 </div>
 
                 <div className="relative group">

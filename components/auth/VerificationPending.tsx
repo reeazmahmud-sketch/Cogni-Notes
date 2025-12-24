@@ -50,7 +50,7 @@ const VerificationPending: React.FC<VerificationPendingProps> = ({ email, onVeri
                 <button 
                   onClick={handleSimulateClick}
                   disabled={isLoading}
-                  className="w-full py-4 bg-white/5 border border-white/10 text-slate-400 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                  className="w-full py-4 liquid-glass-btn rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 disabled:opacity-50"
                 >
                     {isLoading ? <div className="w-4 h-4 border-2 border-slate-500 border-t-slate-300 rounded-full animate-spin"></div> : 'ডেমো: লিঙ্ক ক্লিক সিমুলেট করুন'}
                 </button>
@@ -75,7 +75,7 @@ const VerificationPending: React.FC<VerificationPendingProps> = ({ email, onVeri
 
             <button 
               onClick={onVerified}
-              className="w-full h-18 bg-sky-500/5 backdrop-blur-xl border border-sky-500/20 text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_20px_50px_rgba(242,100,25,0.3)] rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-500 active:scale-[0.98] flex items-center justify-center gap-4 mt-6"
+              className="w-full h-18 liquid-glass-btn rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-500 active:scale-[0.98] flex items-center justify-center gap-4 mt-6"
             >
                 লগইন স্ক্রিনে ফিরে যান
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
