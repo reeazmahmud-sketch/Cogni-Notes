@@ -89,8 +89,8 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
         {/* Header */}
         <div className="relative z-10 px-8 py-6 flex items-center justify-between border-b border-white/5 bg-[#020617]/80 backdrop-blur-md">
             <div className="flex items-center gap-4">
-                <button onClick={() => setActiveTab(activeTab === 'live' ? 'setup' : 'live')} className="p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all">
-                    <TerminalIcon className="w-6 h-6 text-sky-400" />
+                <button onClick={() => setActiveTab(activeTab === 'live' ? 'setup' : 'live')} className="p-3 liquid-glass-btn rounded-xl">
+                    <TerminalIcon className="w-6 h-6" />
                 </button>
                 <div>
                     <h1 className="text-2xl font-black text-white leading-none">টার্মিনাল ব্রিজ</h1>
@@ -111,7 +111,7 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
         </div>
 
         {activeTab === 'setup' ? (
-            // SETUP VIEW (Original Logic Preserved)
+            // SETUP VIEW
             <div className="flex-1 overflow-y-auto p-12 custom-scrollbar relative z-10">
                  <div className="max-w-4xl mx-auto space-y-12">
                     <div className="bg-[#0f172a]/80 border border-slate-800 rounded-[2rem] p-10 backdrop-blur-xl">
@@ -149,7 +149,7 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                  </div>
             </div>
         ) : (
-            // LIVE TERMINAL VIEW (Matching Screenshot)
+            // LIVE TERMINAL VIEW
             <div className="flex-1 flex flex-col p-6 lg:p-10 gap-6 overflow-hidden relative z-10">
                 
                 {/* Active Agents Row */}
@@ -263,11 +263,11 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                             <PlayIcon className="w-4 h-4" />
                             <span className="text-[9px]">চালান</span>
                         </button>
-                        <button className="col-span-1 h-14 bg-[#1e293b] hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-500/50 rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 transition-all active:scale-95 group">
-                            <StopIcon className="w-4 h-4 group-hover:animate-pulse" />
+                        <button className="col-span-1 h-14 liquid-glass-btn rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 transition-all active:scale-95 group">
+                            <StopIcon className="w-4 h-4" />
                             <span className="text-[9px]">থামুন</span>
                         </button>
-                         <button onClick={clearLogs} className="col-span-1 h-14 bg-[#1e293b] hover:bg-slate-700 text-slate-400 border border-slate-700 hover:border-slate-600 rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+                         <button onClick={clearLogs} className="col-span-1 h-14 liquid-glass-btn rounded-2xl font-black text-sm uppercase tracking-widest flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
                             <TrashIcon className="w-4 h-4" />
                             <span className="text-[9px]">মুছুন</span>
                         </button>
@@ -290,7 +290,7 @@ const BridgeModule: React.FC<BridgeModuleProps> = ({ note, status }) => {
                         />
                         <button 
                             type="submit"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#1e293b] hover:bg-blue-600 border border-slate-700 hover:border-blue-500 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all active:scale-90"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 liquid-glass-btn rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all active:scale-90"
                         >
                             <svg className="w-4 h-4 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />

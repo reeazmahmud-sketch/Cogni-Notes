@@ -148,11 +148,11 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, projectName, branchName, 
 
   return (
     <div 
-      className={`h-full flex flex-col p-4 md:p-6 relative max-w-full mx-auto font-['Hind_Siliguri'] transition-all duration-1000 ${showSaveFlash ? 'auto-save-flash' : ''}`}
+      className={`h-full flex flex-col p-8 md:p-10 relative max-w-full mx-auto font-['Hind_Siliguri'] transition-all duration-1000 ${showSaveFlash ? 'auto-save-flash' : ''}`}
       onClick={onInteract}
     >
       {/* 1. COMPACT TOP TOOLBAR (Replacing Title Area) */}
-      <div className="flex justify-between items-center z-[60] bg-[#010409]/80 backdrop-blur-3xl px-8 py-4 rounded-[3rem] border border-white/5 shadow-2xl mb-4">
+      <div className="flex justify-between items-center z-[60] bg-[#010409]/80 backdrop-blur-3xl px-8 py-4 rounded-[3rem] border border-white/5 shadow-2xl mb-6 shrink-0">
           
           {/* Left: Breadcrumbs & Small Title Input */}
           <div className="flex flex-col gap-0.5 max-w-[200px]">
@@ -231,7 +231,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, projectName, branchName, 
           <LiveChat noteContent={content} onClose={() => setShowLiveChat(false)} />
         </div>
       ) : (
-        <div className="flex flex-col flex-1 relative group z-10 overflow-hidden">
+        <div className="flex flex-col flex-1 relative group z-10">
           
           {/* 2. MAXIMIZED EDITOR SECTION - Uses Cogni-Input Style */}
           <div className="flex-1 relative">
@@ -247,7 +247,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, projectName, branchName, 
           </div>
           
           {/* 3. Footer Row */}
-          <div className="flex items-center justify-between px-12 py-6">
+          <div className="flex items-center justify-between px-12 py-6 shrink-0">
               <div className="flex items-center gap-3">
                 <div className={`w-2 h-2 rounded-full ${isAutoSaving ? 'bg-[#f26419] animate-ping' : isDirty ? 'bg-amber-500' : 'bg-emerald-500 shadow-[0_0_10px_#10b981]'}`}></div>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">

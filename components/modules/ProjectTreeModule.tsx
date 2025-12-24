@@ -166,7 +166,7 @@ const ProjectTreeModule: React.FC<ProjectTreeModuleProps> = ({
         {/* Compact Header */}
         <div className="h-16 px-8 flex items-center justify-between z-[110] relative bg-[#010409]/60 backdrop-blur-3xl border-b border-white/5">
             <div className="flex items-center gap-4">
-                <button onClick={() => navigate('/dashboard/editor')} className="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-500 hover:text-white transition-all">
+                <button onClick={() => navigate('/dashboard/editor')} className="p-2 liquid-glass-btn rounded-xl">
                     <XMarkIcon className="w-3.5 h-3.5" />
                 </button>
                 <div className="flex flex-col">
@@ -182,7 +182,7 @@ const ProjectTreeModule: React.FC<ProjectTreeModuleProps> = ({
                 </div>
                 <button 
                   onClick={() => { setOffset({x: 0, y: 0}); setZoom(0.8); setFocusedId(null); }}
-                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] font-black text-[#f26419] uppercase tracking-widest hover:bg-[#f26419]/10 transition-all"
+                  className="px-4 py-2 liquid-glass-btn rounded-full text-[9px] font-black uppercase tracking-widest"
                 >
                     রিসেট
                 </button>

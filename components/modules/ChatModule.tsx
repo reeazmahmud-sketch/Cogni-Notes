@@ -130,7 +130,7 @@ const CogniSentinel: React.FC<{ state: 'idle' | 'thinking' | 'talking' }> = ({ s
 
 const ChatModule: React.FC<ChatModuleProps> = ({ note }) => {
     const [messages, setMessages] = useState<Message[]>([
-        { role: 'ai', content: `নমস্কার! আমি আপনার নোট "${note.title}" নিয়ে আলোচনার জন্য প্রস্তুত। আমি কি কোনো নির্দিষ্ট বিষয়ের ব্যাখ্যা দেব নাকি এই বিষয়ের উপর ভিত্তি করে একটি ছবি তৈরি করব?` }
+        { role: 'ai', content: `হ্যালো! আমি আপনার নোট "${note.title}" নিয়ে আলোচনার জন্য প্রস্তুত। আমি কি কোনো নির্দিষ্ট বিষয়ের ব্যাখ্যা দেব নাকি এই বিষয়ের উপর ভিত্তি করে একটি ছবি তৈরি করব?` }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);

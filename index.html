@@ -34,31 +34,30 @@
 
       /* --- LIQUID GLASS TRANSITION SYSTEM --- */
       
-      /* Base Button Style: Light Blue Glass */
       .liquid-glass-btn {
-        background: rgba(56, 189, 248, 0.1); /* Visible Light Blue Tint */
-        border: 1px solid rgba(56, 189, 248, 0.3); /* Distinct Blue Border */
+        background: rgba(56, 189, 248, 0.08); /* Default Light Blue Tint */
+        border: 1px solid rgba(56, 189, 248, 0.25);
         backdrop-filter: blur(16px);
-        color: #bae6fd; /* Light Sky Text */
+        color: #bae6fd;
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastic/Liquid Bounce */
         cursor: pointer;
-        z-index: 1;
+        z-index: 10;
         box-shadow: 
-          0 4px 20px rgba(0, 0, 0, 0.2), 
-          inset 0 0 15px rgba(56, 189, 248, 0.1); /* Inner Blue Glow */
+          0 4px 20px rgba(0, 0, 0, 0.1),
+          inset 0 0 15px rgba(56, 189, 248, 0.05);
       }
 
-      /* Hover State: Sun-Orange Reflection */
+      /* Interaction State: Sun-Orange Transformation */
       .liquid-glass-btn:hover {
-        transform: scale(1.05) translateY(-2px);
-        background: rgba(242, 100, 25, 0.15); /* Sun Orange Tint */
+        transform: scale(1.03) translateY(-2px);
+        background: rgba(242, 100, 25, 0.15); /* Sun Orange */
         border-color: #f26419;
         color: white !important;
         box-shadow: 
-          0 10px 40px -10px rgba(242, 100, 25, 0.6), /* Deep Orange Glow */
-          inset 0 0 20px rgba(242, 100, 25, 0.3);   /* Inner Liquid Light */
+          0 15px 40px -10px rgba(242, 100, 25, 0.5),
+          inset 0 0 25px rgba(242, 100, 25, 0.25);
       }
       
       .liquid-glass-btn:active {
@@ -66,44 +65,40 @@
         background: rgba(242, 100, 25, 0.25);
         border-color: #f26419;
         box-shadow: 0 0 15px rgba(242, 100, 25, 0.3);
+        transition: all 0.1s ease;
       }
 
-      /* The Liquid Reflection Layer */
+      /* Liquid Reflection Sweep */
       .liquid-glass-btn::after {
         content: '';
         position: absolute;
-        top: 0; 
-        left: -150%; 
-        width: 150%; 
+        top: 0;
+        left: -120%;
+        width: 100%;
         height: 100%;
         background: linear-gradient(
-          115deg, 
+          90deg, 
           transparent 0%, 
-          transparent 40%, 
-          rgba(255, 255, 255, 0.4) 45%, 
-          rgba(242, 100, 25, 0.6) 50%, 
-          rgba(255, 255, 255, 0.4) 55%, 
-          transparent 60%, 
+          rgba(255, 255, 255, 0.3) 50%, 
+          rgba(242, 100, 25, 0.3) 55%,
           transparent 100%
         );
-        transform: skewX(-20deg);
+        transform: skewX(-25deg);
         transition: 0s;
         z-index: -1;
-        opacity: 0;
-      }
-      
-      .liquid-glass-btn:hover::after {
-        left: 150%;
-        opacity: 1;
-        transition: 0.7s ease-in-out;
       }
 
-      /* Active State for Nav Items (Permanent Sun-Orange) */
+      .liquid-glass-btn:hover::after {
+        left: 150%;
+        transition: 0.6s ease-in-out;
+      }
+
+      /* Active State for Nav Items */
       .liquid-glass-active {
         background: rgba(242, 100, 25, 0.15) !important;
         border-color: #f26419 !important;
         color: white !important;
-        box-shadow: 0 0 30px rgba(242, 100, 25, 0.4) !important;
+        box-shadow: 0 0 30px rgba(242, 100, 25, 0.3) !important;
         transform: scale(1.02);
       }
 
@@ -124,12 +119,11 @@
         font-weight: 400;
       }
 
-      /* Input Focus: Sun-Orange Transformation (Brightened by 30%) */
       .cogni-input:focus {
         border-color: #f26419 !important;
         background: rgba(20, 25, 40, 0.95) !important;
         box-shadow: 
-          0 0 35px rgba(242, 100, 25, 0.5), /* Strong Orange Glow */
+          0 0 35px rgba(242, 100, 25, 0.5), 
           inset 0 0 15px rgba(242, 100, 25, 0.1) !important;
         transform: translateY(-1px) scale(1.005);
         color: white !important;
@@ -137,15 +131,15 @@
 
       /* --- COGNI LINK SYSTEM --- */
       .cogni-link {
-        color: #3b82f6; /* Blue-500 Default */
+        color: #3b82f6; 
         transition: color 0.3s ease;
         cursor: pointer;
       }
       .cogni-link:hover {
-        color: #f26419 !important; /* Sun-Orange Hover */
+        color: #f26419 !important; 
       }
       .cogni-link:active {
-        color: #c2410c !important; /* Darker Orange Active */
+        color: #c2410c !important; 
       }
 
       /* --- FUTURISTIC ENVIRONMENT --- */
@@ -261,6 +255,12 @@
       }
       .animate-synapse-pulse {
         animation: synapse-pulse 3s linear infinite;
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
       }
 
       .no-scrollbar::-webkit-scrollbar { display: none; }

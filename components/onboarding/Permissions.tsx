@@ -186,7 +186,7 @@ const Permissions: React.FC<PermissionsProps> = ({ onComplete }) => {
           <button 
             onClick={handlePermissions}
             disabled={isRequesting}
-            className="w-full h-18 bg-white/[0.03] backdrop-blur-3xl border border-white/10 text-slate-200 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_20px_60px_rgba(242,100,25,0.4)] rounded-[2.5rem] font-black text-lg uppercase tracking-widest transition-all duration-700 active:scale-95 flex items-center justify-center gap-4 relative overflow-hidden"
+            className="w-full h-18 liquid-glass-btn rounded-[2.5rem] font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 relative overflow-hidden"
           >
             {isRequesting ? (
               <div className="w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>

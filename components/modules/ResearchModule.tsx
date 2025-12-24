@@ -50,7 +50,7 @@ const ResearchModule: React.FC<ResearchModuleProps> = ({ note }) => {
         <button 
           onClick={handleResearch} 
           disabled={isResearching || !query}
-          className="px-12 py-8 bg-sky-500/5 backdrop-blur-xl border border-sky-500/20 text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_0_40px_rgba(242,100,25,0.4)] rounded-[2.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all duration-500 active:scale-95 flex items-center justify-center gap-4 group"
+          className="px-12 py-8 liquid-glass-btn rounded-[2.5rem] font-black text-xs uppercase tracking-[0.3em] transition-all duration-500 active:scale-95 flex items-center justify-center gap-4 group"
         >
           {isResearching ? <Spinner /> : <><SparklesIcon className="w-5 h-5 group-hover:rotate-12 transition-transform" /> অনুসন্ধান</>}
         </button>

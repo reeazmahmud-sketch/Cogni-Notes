@@ -346,18 +346,18 @@ const SettingsModule: React.FC<SettingsModuleProps> = ({ isTouchIdEnabled, onTog
                         <div className="mt-12 pt-8 border-t border-white/5">
                             <button 
                                 onClick={onLogout}
-                                className="w-full h-16 bg-[#161b22] border border-white/5 rounded-full flex items-center justify-between px-8 group hover:border-red-500/30 hover:bg-red-500/5 transition-all"
+                                className="w-full h-16 liquid-glass-btn rounded-full flex items-center justify-between px-8 group transition-all"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
                                         <LogoutIcon className="w-5 h-5" />
                                     </div>
                                     <div className="text-left">
-                                        <h4 className="font-bold text-red-400 group-hover:text-red-500 transition-colors">লগ আউট</h4>
-                                        <p className="text-[10px] text-slate-500">বর্তমান সেশন বন্ধ করুন</p>
+                                        <h4 className="font-bold text-red-400 group-hover:text-white transition-colors">লগ আউট</h4>
+                                        <p className="text-[10px] text-slate-500 group-hover:text-slate-300">বর্তমান সেশন বন্ধ করুন</p>
                                     </div>
                                 </div>
-                                <div className="text-slate-600 group-hover:translate-x-1 transition-transform">
+                                <div className="text-slate-600 group-hover:translate-x-1 transition-transform group-hover:text-white">
                                     &gt;
                                 </div>
                             </button>

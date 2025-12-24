@@ -76,8 +76,8 @@ const LabModule: React.FC<LabModuleProps> = ({ note }) => {
                                     onClick={() => setAiConfig(prev => ({ ...prev, model: m.id }))}
                                     className={`text-left p-4 rounded-2xl border transition-all duration-500 ${
                                         aiConfig.model === m.id 
-                                            ? 'bg-[#f26419]/10 border-[#f26419] shadow-[0_0_20px_rgba(242,100,25,0.1)]' 
-                                            : 'bg-white/5 border-white/5 hover:bg-white/10'
+                                            ? 'liquid-glass-btn text-white' 
+                                            : 'liquid-glass-btn text-slate-400'
                                     }`}
                                 >
                                     <div className={`font-black text-sm ${aiConfig.model === m.id ? 'text-white' : 'text-slate-400'}`}>{m.name}</div>
@@ -146,7 +146,7 @@ const LabModule: React.FC<LabModuleProps> = ({ note }) => {
                                 onClick={() => setSelectedLength(len as SummaryLength)}
                                 className={`flex-1 py-4 text-[11px] font-black rounded-2xl border transition-all duration-500 uppercase tracking-widest active:scale-95 ${
                                     selectedLength === len 
-                                        ? 'bg-sky-500/10 border-sky-500 text-white shadow-[0_0_20px_rgba(56,189,248,0.1)]' 
+                                        ? 'liquid-glass-btn text-white' 
                                         : 'bg-white/5 border-white/5 text-slate-500 hover:text-slate-300 hover:bg-white/10'
                                 }`}
                             >
@@ -159,7 +159,7 @@ const LabModule: React.FC<LabModuleProps> = ({ note }) => {
                     <button 
                         onClick={handleGenerateSummary}
                         disabled={loading['summary']}
-                        className="w-full h-16 bg-sky-500/5 backdrop-blur-xl border border-sky-500/20 text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_20px_50px_rgba(242,100,25,0.3)] rounded-2xl font-black text-sm uppercase tracking-[0.2em] transition-all duration-700 flex items-center justify-center gap-4 group"
+                        className="w-full h-16 liquid-glass-btn rounded-2xl font-black text-sm uppercase tracking-[0.2em] transition-all duration-700 flex items-center justify-center gap-4 group"
                     >
                         {loading['summary'] ? <Spinner /> : (
                             <>
@@ -266,7 +266,7 @@ const LabCard: React.FC<{ title: string; icon: React.ReactNode; loading?: boolea
         <button 
             onClick={onRun} 
             disabled={loading} 
-            className="p-4 bg-sky-500/5 border border-sky-500/10 text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] rounded-2xl transition-all duration-500 group active:scale-95 shadow-xl"
+            className="p-4 liquid-glass-btn rounded-2xl transition-all duration-500 group active:scale-95 shadow-xl"
             title="রান করুন"
         >
           {loading ? <Spinner /> : <SparklesIcon className="w-5 h-5 group-hover:rotate-12 transition-all" />}

@@ -79,11 +79,11 @@ const VoiceStudioModule: React.FC = () => {
                     <div className="flex bg-[#1a212f] rounded-full p-1 border border-white/5">
                         <button 
                             onClick={() => setLanguage('BN')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-black transition-all ${language === 'BN' ? 'bg-sky-500 text-white shadow-lg' : 'text-slate-500'}`}
+                            className={`px-4 py-1.5 rounded-full text-[10px] font-black transition-all ${language === 'BN' ? 'bg-sky-500 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                         >BN</button>
                         <button 
                             onClick={() => setLanguage('EN')}
-                            className={`px-4 py-1.5 rounded-full text-[10px] font-black transition-all ${language === 'EN' ? 'bg-sky-500 text-white shadow-lg' : 'text-slate-500'}`}
+                            className={`px-4 py-1.5 rounded-full text-[10px] font-black transition-all ${language === 'EN' ? 'bg-sky-500 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                         >EN</button>
                     </div>
                     <button className="p-2 text-slate-400">
@@ -120,8 +120,8 @@ const VoiceStudioModule: React.FC = () => {
                         <div className="flex justify-between items-center mb-10">
                             <h3 className="text-xs font-black text-sky-400 uppercase tracking-[0.4em]">LIVE TRANSCRIPTION</h3>
                             <div className="flex gap-3">
-                                <button className="p-3 bg-white/5 rounded-xl border border-white/5 text-slate-500 hover:text-white transition-all"><LinkIcon className="w-4 h-4" /></button>
-                                <button className="p-3 bg-white/5 rounded-xl border border-white/5 text-slate-500 hover:text-white transition-all"><CodeIcon className="w-4 h-4" /></button>
+                                <button className="w-10 h-10 liquid-glass-btn rounded-xl flex items-center justify-center group"><LinkIcon className="w-4 h-4 group-hover:text-white" /></button>
+                                <button className="w-10 h-10 liquid-glass-btn rounded-xl flex items-center justify-center group"><CodeIcon className="w-4 h-4 group-hover:text-white" /></button>
                             </div>
                         </div>
 
@@ -176,23 +176,23 @@ const VoiceStudioModule: React.FC = () => {
                 <div className="flex items-center justify-center gap-12 pb-10">
                     <button 
                         onClick={() => { stopRecording(); setDuration(0); }}
-                        className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:bg-red-500/10 hover:text-red-500 transition-all active:scale-90"
+                        className="w-16 h-16 liquid-glass-btn rounded-full flex items-center justify-center text-slate-500 hover:text-white transition-all active:scale-90"
                     >
                         <StopIcon className="w-6 h-6" />
                     </button>
 
                     <button 
                         onClick={isRecording ? stopRecording : startRecording}
-                        className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-700 shadow-2xl ${
+                        className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-700 shadow-2xl liquid-glass-btn ${
                             isRecording 
-                                ? 'bg-sky-500 text-white animate-core-pulse' 
-                                : 'bg-[#0c111d] border-2 border-sky-500/40 text-sky-400 hover:bg-sky-500 hover:text-white'
+                                ? 'bg-sky-500 text-white animate-core-pulse border-[#f26419]' 
+                                : ''
                         }`}
                     >
                         {isConnecting ? <Spinner /> : <MicIcon className="w-10 h-10" />}
                     </button>
 
-                    <button className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:bg-white/10 hover:text-white transition-all active:scale-90">
+                    <button className="w-16 h-16 liquid-glass-btn rounded-full flex items-center justify-center text-slate-500 hover:text-white transition-all active:scale-90">
                         <PauseIcon className="w-6 h-6" />
                     </button>
                 </div>

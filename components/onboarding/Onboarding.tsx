@@ -134,7 +134,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
               </div>
               <span className="text-xl font-black text-white tracking-tighter uppercase">কগনি নোটস</span>
           </div>
-          <button onClick={onComplete} className="px-6 py-2.5 bg-sky-500/5 backdrop-blur-md border border-sky-500/10 rounded-full text-slate-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-all duration-300">এড়িয়ে যান</button>
+          <button onClick={onComplete} className="px-6 py-2.5 liquid-glass-btn rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300">এড়িয়ে যান</button>
       </div>
 
       <div className="w-full max-w-4xl flex flex-col items-center text-center">
@@ -161,7 +161,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
 
             <button 
                 onClick={current.onNext}
-                className="w-full h-18 bg-sky-500/5 backdrop-blur-xl border border-sky-500/20 text-sky-400 hover:bg-[#f26419] hover:text-white hover:border-[#f26419] hover:shadow-[0_0_40px_rgba(242,100,25,0.4)] rounded-[2.5rem] font-black text-base uppercase tracking-widest transition-all duration-500 active:scale-95 flex items-center justify-center gap-4 relative overflow-hidden group"
+                className="w-full h-18 liquid-glass-btn rounded-[2.5rem] font-black text-base uppercase tracking-widest transition-all duration-500 active:scale-95 flex items-center justify-center gap-4 relative overflow-hidden group"
             >
                 <span className="relative z-10">{current.buttonText}</span>
                 <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>

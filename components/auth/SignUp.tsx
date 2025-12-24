@@ -51,6 +51,11 @@ const SignUp: React.FC<SignUpProps> = ({ onLogin, onVerificationSent, onGoToLogi
         return;
     }
 
+    if (username.trim().length < 3) {
+        setError('ইউজারনেম অন্তত ৩ অক্ষরের হতে হবে।');
+        return;
+    }
+
     if (!validateEmail(email)) {
       setError('দয়া করে একটি সঠিক ইমেল অ্যাড্রেস প্রদান করুন।');
       return;

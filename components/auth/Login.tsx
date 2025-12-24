@@ -19,7 +19,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
   const [socialOverlay, setSocialOverlay] = useState<{ active: boolean; platform: 'google' | 'apple' }>({ active: false, platform: 'google' });
   const [error, setError] = useState('');
   // Replaced boolean state with status string for multi-stage feedback
-  const [scanStatus, setScanStatus] = useState<'idle' | 'scanning' | 'success'>('idle');
+  const [scanStatus, setScanStatus] = useState<'idle' | 'scanning' | 'success' | 'failure'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,21 +78,27 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
   };
 
   const handleTouchIdLogin = () => {
-    if (scanStatus !== 'idle') return;
+    if (scanStatus !== 'idle' && scanStatus !== 'failure') return;
     
     // Start Scanning
     setScanStatus('scanning');
     
-    // Simulate scan duration then success
+    // Simulate scan duration
     setTimeout(() => {
-        setScanStatus('success');
-        
-        // Wait briefly to show success state before logging in
-        setTimeout(() => {
-            onLogin();
-            // Reset state (though component will likely unmount)
-            setTimeout(() => setScanStatus('idle'), 500);
-        }, 1000);
+        // Randomly simulate success (70%) or failure (30%)
+        const isSuccess = Math.random() > 0.3;
+
+        if (isSuccess) {
+            setScanStatus('success');
+            // Wait briefly to show success state before logging in
+            setTimeout(() => {
+                onLogin();
+            }, 1000);
+        } else {
+            setScanStatus('failure');
+            // Allow retry manually or reset after delay
+            setTimeout(() => setScanStatus('idle'), 2500); 
+        }
     }, 2000);
   };
 
@@ -159,7 +165,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                     <label className="text-[10px] font-black text-sky-400 uppercase tracking-[0.2em] ml-2">ব্যবহারকারীর ইউজারনেম/ইমেল</label>
                     <div className="relative group">
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#f26419] transition-colors z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
@@ -182,7 +188,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                     </div>
                     <div className="relative group">
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#f26419] transition-colors z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                             </svg>
                         </div>
@@ -207,7 +213,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                     {isLoading ? <Spinner /> : (
                         <>
                             লগইন করুন 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
                         </>
@@ -266,13 +272,17 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
         <div className="fixed inset-0 bg-black/90 backdrop-blur-3xl z-[100] flex items-center justify-center animate-in fade-in duration-500">
             <div className="text-center space-y-8 relative">
                 <div className={`absolute inset-0 blur-[100px] rounded-full transition-colors duration-700 ${
-                    scanStatus === 'success' ? 'bg-emerald-500/20' : 'bg-[#f26419]/20'
+                    scanStatus === 'success' ? 'bg-emerald-500/20' : 
+                    scanStatus === 'failure' ? 'bg-red-500/20' :
+                    'bg-[#f26419]/20'
                 }`}></div>
                 
                 <div className="relative z-10">
                     <div className="relative inline-block">
                         <TouchIdIcon className={`w-32 h-32 transition-all duration-500 ${
-                            scanStatus === 'success' ? 'text-emerald-500 scale-110' : 'text-[#f26419] animate-pulse'
+                            scanStatus === 'success' ? 'text-emerald-500 scale-110' : 
+                            scanStatus === 'failure' ? 'text-red-500 animate-[shake_0.5s_ease-in-out]' :
+                            'text-[#f26419] animate-pulse'
                         }`} />
                         
                         {/* Scanning Line */}
@@ -284,13 +294,31 @@ const Login: React.FC<LoginProps> = ({ onLogin, onGoToSignUp, onGoToForgotPasswo
                         {scanStatus === 'success' && (
                             <div className="absolute inset-0 border-4 border-emerald-500 rounded-full animate-ping"></div>
                         )}
+
+                        {/* Failure Pulse */}
+                        {scanStatus === 'failure' && (
+                            <div className="absolute inset-0 border-4 border-red-500/50 rounded-full animate-pulse"></div>
+                        )}
                     </div>
 
                     <p className={`text-xs font-black uppercase tracking-[0.5em] mt-8 transition-colors duration-500 ${
-                        scanStatus === 'success' ? 'text-emerald-400' : 'text-slate-400'
+                        scanStatus === 'success' ? 'text-emerald-400' : 
+                        scanStatus === 'failure' ? 'text-red-400' :
+                        'text-slate-400'
                     }`}>
-                        {scanStatus === 'success' ? 'আইডেন্টিটি ভেরিফাইড' : 'বায়োমেট্রিক স্ক্যানিং...'}
+                        {scanStatus === 'success' ? 'আইডেন্টিটি ভেরিফাইড' : 
+                         scanStatus === 'failure' ? 'ভেরিফিকেশন ব্যর্থ হয়েছে' :
+                         'বায়োমেট্রিক স্ক্যানিং...'}
                     </p>
+
+                    {scanStatus === 'failure' && (
+                        <button 
+                            onClick={() => setScanStatus('idle')}
+                            className="mt-8 text-[10px] font-black text-slate-500 hover:text-white uppercase tracking-widest border-b border-dashed border-slate-700 pb-1 hover:border-white transition-colors"
+                        >
+                            আবার চেষ্টা করুন
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

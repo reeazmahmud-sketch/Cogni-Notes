@@ -91,6 +91,17 @@ const AppContent: React.FC = () => {
   
   const [bridgeStatus, setBridgeStatus] = useState<'connected' | 'disconnected' | 'connecting'>('disconnected');
 
+  const currentView = location.pathname.split('/')[2] as ViewType || 'editor';
+
+  // Auto-toggle sidebar based on module
+  useEffect(() => {
+    if (currentView === 'editor') {
+        setIsSidebarVisible(true);
+    } else {
+        setIsSidebarVisible(false);
+    }
+  }, [currentView]);
+
   useEffect(() => {
     if (isLoggedIn) {
       const bridge = new BridgeService(
@@ -148,7 +159,7 @@ const AppContent: React.FC = () => {
     setNotes(prev => [newNote, ...prev]);
     setProjects(prev => prev.map(p => p.id === projectId ? { ...p, branches: p.branches.map(b => b.id === branchId ? { ...b, notes: [...b.notes, newNoteId] } : b) } : p));
     setActiveNoteId(newNoteId);
-    setIsSidebarVisible(false); 
+    // Note: useEffect will handle setting sidebar visible when navigating to editor
     navigate('/dashboard/editor');
   };
 
@@ -208,7 +219,6 @@ const AppContent: React.FC = () => {
     else navigate('/dashboard/editor');
   };
 
-  const currentView = location.pathname.split('/')[2] as ViewType || 'editor';
   const viewLabels: Record<ViewType, string> = {
     editor: 'স্মার্ট এডিটর', chat: 'এআই চ্যাট', tasks: 'টাস্ক ম্যানেজার', lab: 'এআই ল্যাব', research: 'গবেষণা কেন্দ্র', terminal: 'টার্মিনাল ব্রিজ', settings: 'সেটিিংস', project: 'প্রজেক্ট ম্যাপ', studio: 'ভয়েস স্টুডিও'
   };
@@ -275,8 +285,8 @@ const AppContent: React.FC = () => {
                           projects={projects} 
                           notes={notes} 
                           activeNoteId={activeNoteId} 
-                          onNoteSelect={(id) => { setActiveNoteId(id); setIsSidebarVisible(false); navigate('/dashboard/editor'); }} 
-                          onProjectSelect={(id) => { setIsSidebarVisible(false); navigate(`/dashboard/project/${id}`); }} 
+                          onNoteSelect={(id) => { setActiveNoteId(id); navigate('/dashboard/editor'); }} 
+                          onProjectSelect={(id) => { navigate(`/dashboard/project/${id}`); }} 
                           onCreateProject={createNewProject} 
                           onDeleteNote={deleteNote} 
                         />
@@ -284,7 +294,7 @@ const AppContent: React.FC = () => {
                     </div>
                     <main className="flex-1 relative overflow-hidden bg-gradient-to-br from-[#020617] to-[#010409]">
                       <Routes>
-                        <Route path="editor" element={activeNote ? <NoteEditor key={activeNote.id} note={activeNote} projectName={activeProjectForNote?.name} branchName={activeBranchForNote?.name} onContentChange={(c) => updateNoteContent(activeNote.id, c)} onTitleChange={(t) => updateNoteTitle(activeNote.id, t)} onInteract={() => setIsSidebarVisible(false)} onDelete={() => deleteNote(activeNote.id)} /> : <NoNoteSelected />} />
+                        <Route path="editor" element={activeNote ? <NoteEditor key={activeNote.id} note={activeNote} projectName={activeProjectForNote?.name} branchName={activeBranchForNote?.name} onContentChange={(c) => updateNoteContent(activeNote.id, c)} onTitleChange={(t) => updateNoteTitle(activeNote.id, t)} onInteract={() => {}} onDelete={() => deleteNote(activeNote.id)} /> : <NoNoteSelected />} />
                         <Route path="project/:projectId" element={<ProjectTreeModule projects={projects} notes={notes} activeNoteId={activeNoteId} hasClipboard={!!clipboard} onNoteSelect={(id) => { setActiveNoteId(id); navigate('/dashboard/editor'); }} createNewNote={createNewNote} onCreateBranch={createNewBranch} onCopyBranch={() => {}} onPasteBranch={() => {}} onMoveNote={moveNoteToBranch} onMoveBranch={moveBranchToParent} />} />
                         <Route path="chat" element={activeNote ? <ChatModule note={activeNote} /> : <NoNoteSelected />} />
                         <Route path="tasks" element={activeNote ? <TaskModule note={activeNote} onUpdate={(c) => updateNoteContent(activeNote.id, c)} /> : <NoNoteSelected />} />
