@@ -20,6 +20,7 @@ import ForgotPassword from './components/auth/ForgotPassword';
 import VerificationPending from './components/auth/VerificationPending';
 import { NoteIcon, BrainIcon, ListIcon, TerminalIcon, SparklesIcon, SearchIcon, ChatBubbleIcon, GearIcon, MicIcon } from './components/common/Icon';
 import { BridgeService } from './services/bridgeService';
+import { CircularMenu } from './components/CircularMenu';
 
 type ViewType = 'editor' | 'chat' | 'tasks' | 'lab' | 'terminal' | 'research' | 'settings' | 'project' | 'studio';
 
@@ -305,6 +306,9 @@ const AppContent: React.FC = () => {
                         <Route path="settings" element={<SettingsModule isTouchIdEnabled={isTouchIdEnabled} onToggleTouchId={setIsTouchIdEnabled} onLogout={handleLogout} />} />
                         <Route path="*" element={<Navigate to="editor" />} />
                       </Routes>
+                      
+                      {/* Circular Menu Hub */}
+                      <CircularMenu />
                     </main>
                 </div>
               </div>

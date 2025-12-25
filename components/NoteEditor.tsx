@@ -165,7 +165,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, projectName, branchName, 
                 value={title}
                 onChange={(e) => handleTitleChangeLocal(e.target.value)}
                 placeholder="নোট শিরোনাম"
-                className="bg-transparent text-sm font-black text-slate-300 outline-none border-none placeholder-slate-900 focus:text-[#f26419] transition-colors"
+                className="bg-transparent text-sm font-black text-slate-300 outline-none border-none placeholder-slate-900 focus:text-[#f26419] transition-colors caret-[#39ff14]"
               />
           </div>
 
