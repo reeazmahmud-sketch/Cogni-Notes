@@ -1,6 +1,12 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+## 📱 Screenshots
+
+### Note-Taking Interface
+
+![Cogni-Notes - Screen 1](cogni-notes_011.png)
+![Cogni-Notes - Screen 2](cogni-notes_012.png)
+![Cogni-Notes - Screen 3](cogni-notes_013.png)
+![Cogni-Notes - Screen 4](cogni-notes_014.png)
+
 
 # Run and deploy your AI Studio app
 
